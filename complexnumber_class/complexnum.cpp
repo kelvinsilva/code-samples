@@ -62,30 +62,75 @@ std::ostream & operator << (std::ostream& outstream,const complexnum& outnum){
 
 std::istream& operator >> (std::istream& instream, complexnum& outnum){
 
-        char archars[9];
-        instream.getline(archars, 8);
-        int twonums[2];
-        int z = 0;
-        for (int i = 0; i <8; i++){
+  string str;
+  string xval = "", yval = "";
+  string::iterator it;
+  getline(instream, str);
+  int index = 0;
 
-            if (isdigit(archars[i]) || archars[i] == '-'){
+  //remove all whitespaces
+  for ( it = str.begin() ; it < str.end(); it++ ){
 
-                if (archars[i] == '-'){
+        if (*it == ' '){
+            str.erase(it);
+            it--;
+        }
+  }
 
-                    twonums[z] = -1*(archars[++i]-'0');
+  //remove everything trailing (
+  for ( it = str.begin() ; it < str.end(); it++ ){
 
-                z++;
-                }else {
+        if(*it == '('){
+            break;
+        }
+        str.erase(it);
+        it--;
 
-                    twonums[z] = archars[i++]-'0';
-                    z++;
+  }
 
-                }
-            }
+  //remove everything after )
+  for (it = str.end()-1; it > str.begin(); it--){
+
+
+        if(*it == ')'){
+            break;
+        }
+        str.erase(it);
+  }
+
+  //remove the parenthesis
+  for ( it = str.begin() ; it < str.end(); it++ ){
+
+       if (*it == '(' || *it == ')'){
+        str.erase(it);
+        it--;
+       }
+
+  }
+  for (it = str.begin(); it < str.end(); it++){
+
+
+      if(*it == ','){
+
+        it++;
+        for(; it < str.end(); it++){
+
+            yval+=*it;
+
         }
 
-        outnum.setx(twonums[0]);
-        outnum.sety(twonums[1]);
+      }
+      xval += *it;
+
+
+  }
+
+     int xvalint = atoi(xval.c_str());
+     int yvalint = atoi(yval.c_str());
+
+
+        outnum.setx(xvalint);
+        outnum.sety(yvalint);
 
         return instream;
 
