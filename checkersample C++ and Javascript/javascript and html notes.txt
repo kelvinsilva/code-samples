@@ -1,0 +1,192 @@
+javascript and html notes....
+Even though this is not part of the actual program, id thought i show this.
+When i was thinking about how to come up with the idea i thought that i should just write a simple application first, and then write an actual win32 program to spitout text files....
+This version though is very unreliable.
+
+
+<!DOCTYPE html>
+<html>
+	<body>
+		<script>
+
+
+			function startbtn(){
+				var pinput = document.getElementById("player1").value;
+				var pinput2 = document.getElementById("player2").value;
+				var color1 = "<font color = \"#FFFF00\">" + pinput + "</font>";
+				var color2 = "<font color = \"#0000FF\">" + pinput2 + "</font>";
+				document.getElementById("p1").innerHTML = color1 + "---" + color2;
+			}
+		</script>
+		<div align = "middle">
+			<form>
+			Player 1:<input type ="text" id = "player1">
+			Player 2: <input type = "text" id = "player2">
+				<input type = "button" onclick = "startbtn()" value = "START"/>
+			</form>
+			<p id = "p1">PLAYER1 --- PLAYER2</p>
+		</div>
+
+
+		<div align = "middle">
+
+		<br>
+
+		<script>
+			
+
+
+			function settoggle(id){
+
+				if(checkertoggle[id.substring(7)] == 0){
+					checkerplace(id);
+
+				checkertoggle[id.substring(7)] = 1;
+			}else{
+						checkerdelete(id);
+
+					checkertoggle[id.substring(7)] = 0;
+				}
+			}
+
+
+			function checkerplace(id){
+				var canv = document.getElementById(id);
+		 var ctx = canv.getContext("2d");
+				ctx.fillStyle = "#000000";
+				ctx.beginPath();
+				ctx.arc(25, 25, 16, 0, Math.PI*2); 
+				ctx.fill();
+			}
+
+
+
+			function checkerdelete(id){
+				var canv = document.getElementById(id);
+		 var ctx = canv.getContext("2d");
+
+				if (id.substring(7) % 2 == 0){
+					ctx.fillStyle = "#FFFF00";
+
+					}else ctx.fillStyle = "#0000FF";
+					ctx.fillRect(0, 0, 50, 50 );
+			}
+
+			var count = 0;
+
+			while(count<16){
+				if (count % 4  == 0){
+					document.write("<br>");
+					document.write("<canvas id = \"canvas_" + count + "\" width = \"50\" height = \" 50\"></canvas>");count++;
+			}
+
+			document.write("<br>");
+
+			}
+
+
+			var count = 0;
+			while(count < 16){
+
+			var name = "canvas_" + count;
+				var canv = document.getElementById(name);
+					var ctx = canv.getContext("2d");
+				if (count % 2 == 0){
+
+				ctx.fillStyle = "#FFFF00";
+
+				}else{
+				ctx.fillStyle = "#0000FF";
+				}
+				ctx.fillRect(0,0,50 ,50);
+				count++;
+				}
+
+			var checkertoggle = new Array(count);
+			for (var counter = 0; counter < count; counter++){
+				checkertoggle[counter] = 0;
+			}
+
+			canvas_0.onclick = function(){
+
+				settoggle(this.id);
+			}
+
+			canvas_1.onclick = function(){
+
+				settoggle(this.id);
+			}
+
+			canvas_2.onclick = function(){
+
+				settoggle(this.id);
+			}
+
+			canvas_3.onclick = function(){
+
+				settoggle(this.id);
+			}
+
+			canvas_4.onclick = function(){
+
+				settoggle(this.id);
+			}
+
+			canvas_5.onclick = function(){
+
+				settoggle(this.id);
+			}
+
+			canvas_6.onclick = function(){
+
+				settoggle(this.id);
+			}
+
+			canvas_7.onclick = function(){
+
+				settoggle(this.id);
+			}
+
+			canvas_8.onclick = function(){
+
+				settoggle(this.id);
+			}
+
+			canvas_9.onclick = function(){
+
+				settoggle(this.id);
+			}
+
+			canvas_10.onclick = function(){
+
+				settoggle(this.id);
+			}
+
+			canvas_11.onclick = function(){
+
+				settoggle(this.id);
+			}
+
+			canvas_12.onclick = function(){
+
+				settoggle(this.id);
+			}
+
+			canvas_13.onclick = function(){
+
+				settoggle(this.id);
+			}
+
+			canvas_14.onclick = function(){
+
+				settoggle(this.id);
+			}
+
+			canvas_15.onclick = function(){
+
+				settoggle(this.id);
+			}
+		</script>
+	</div>
+</body>
+</html>

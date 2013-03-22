@@ -1,0 +1,1 @@
+The purpose of this program is to make a program that outputs javascript and html code to a text file. The javascript and html code is supposed to represent a checker board that can be manipulated by dropping checkers on each square. There are two textboxes that change text and color when startbutton is pressed.
